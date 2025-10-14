@@ -28,12 +28,14 @@ jobs:
         run: chmod +x gradlew
 
       # Step 4: Build the Spring Boot app with Gradle
-      - name: Build with Gradle
-        run: gradle clean build -x test
+      - name: Build with Gradle wrapper
+        run: ./gradlew clean build -x test
 
       # Step 5: Set up Docker Buildx
       - name: Set up Gradle
         uses: gradle/gradle-build-action@v3
+        with:
+          gradle-version: 8.3
 
       # Step 6: Log in to Docker Hub
       - name: Log in to Docker Hub

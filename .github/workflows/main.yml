@@ -23,16 +23,17 @@ jobs:
           distribution: 'temurin'
 
       # Step 3: Grant execute permission for Gradle wrapper
+      
       - name: Grant execute permission for Gradle wrapper
         run: chmod +x gradlew
 
       # Step 4: Build the Spring Boot app with Gradle
       - name: Build with Gradle
-        run: ./gradlew clean build -x test
+        run: gradle clean build -x test
 
       # Step 5: Set up Docker Buildx
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v
 
       # Step 6: Log in to Docker Hub
       - name: Log in to Docker Hub

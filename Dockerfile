@@ -5,7 +5,7 @@ FROM eclipse-temurin:17-jdk-jammy
 WORKDIR /app
 
 # Copy Gradle build output
-COPY build/libs/app.jar app.jar
+COPY backend/build/libs/app.jar app.jar
 
 # Expose port
 EXPOSE 8080

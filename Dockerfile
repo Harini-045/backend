@@ -1,11 +1,11 @@
 # Use an OpenJDK 17 base image
-FROM eclipse-temurin:17-jdk-jammy
+FROM openjdk:17-jdk-slim
 
 # Set working directory
 WORKDIR /app
 
 # Copy Gradle build output
-COPY backend/build/libs/app.jar app.jar
+COPY build/libs/app.jar app.jar
 
 # Expose port
 EXPOSE 8080

@@ -57,10 +57,10 @@ dependencies {
 }
 
 tasks.named('bootJar') {
-    archiveFileName = 'app.jar'  // rename the JAR to app.jar
+    archiveFileName = 'app.jar'
     enabled = true
 }
 
 tasks.named('jar') {
-    enabled = false  // disable the default jar
+    enabled = false
 }

@@ -48,5 +48,5 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/backend:latest
-            ${{ secrets.DOCKER_PASSWORD }}/backend:${{ github.sha }}
+            username/backend:latest
+            password/backend:${{ github.sha }}

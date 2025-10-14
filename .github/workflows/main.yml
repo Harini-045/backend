@@ -48,5 +48,5 @@ jobs:
           context: .
           push: true
           tags: |
-            username/backend:latest
-            password/backend:${{ github.sha }}
+            harinisaravanavel/backend:latest
+            harinisaravanavel/backend:${{ github.sha }}

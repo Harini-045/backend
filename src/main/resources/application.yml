@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/ivms?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: Usernameroot@11
+    driver-class-name: com.mysql.cj.jdbc.Driver  # Updated driver class for recent MySQL versions
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+  data:
+    mongodb:
+      port: 27017
+      host: localhost
+      database: uploads
+
+server:
+  port: 8080
+
+app:
+  jwtSecret:
+  jwtExpirationMs: 86400000

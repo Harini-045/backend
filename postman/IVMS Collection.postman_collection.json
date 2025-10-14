@@ -1,0 +1,535 @@
+{
+	"info": {
+		"_postman_id": "4cd01d4c-2cb5-4875-a943-1b7a391168fe",
+		"name": "IVMS Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28999810"
+	},
+	"item": [
+		{
+			"name": "Get State Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/data/getStates?countryName=India",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"data",
+						"getStates"
+					],
+					"query": [
+						{
+							"key": "countryName",
+							"value": "India"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Manufacturer Details",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/manufacturer/get/51",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"manufacturer",
+						"get",
+						"51"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Product Details",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "default"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/products/get",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"get"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get City Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/data/getCities?stateName=Andhra Pradesh",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"data",
+						"getCities"
+					],
+					"query": [
+						{
+							"key": "stateName",
+							"value": "Andhra Pradesh"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Data Overview",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/data/getOverview",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"data",
+						"getOverview"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Generate Xcel Report",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/api/data/generateXcel/manufacturer",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"data",
+						"generateXcel",
+						"manufacturer"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Upload File",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/chint/Downloads/Bisleri.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/data/uploadFile?manufacturerId=2&manufacturerName=Bisleri",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"data",
+						"uploadFile"
+					],
+					"query": [
+						{
+							"key": "manufacturerId",
+							"value": "2"
+						},
+						{
+							"key": "manufacturerName",
+							"value": "Bisleri"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download File",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/chint/Downloads/Bisleri.png"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/data/downloadFile?fileId=65225d71026adb680bbe8738",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"data",
+						"downloadFile"
+					],
+					"query": [
+						{
+							"key": "fileId",
+							"value": "65225d71026adb680bbe8738"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Manufacturer-Create/Update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/chint/Downloads/LG.png"
+						},
+						{
+							"key": "manufacturerDto",
+							"value": "{\"manufacturerId\": 1, \"manufacturerCompanyName\":\"shsj\",\n\"companyEmailAddress\": \"ramesh@123@gmail.com\"\n}",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/manufacturer/create-update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"manufacturer",
+						"create-update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Download File",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": []
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/data/downloadFile?fileId=65088da9fca58047a8963785",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"data",
+						"downloadFile"
+					],
+					"query": [
+						{
+							"key": "fileId",
+							"value": "65088da9fca58047a8963785"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"ChintamKiran\",\r\n    \"password\": \"Kiran@1234\",\r\n    \"email\": \"chintamvskiran@gmail.com\",\r\n    \"role\":[\"admin\"]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"ChintamAnand3\",\r\n    \"password\": \"anand@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/signin",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"signin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Product - Create/Update",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": null,\r\n    \"manufacturerId\": \"1\",\r\n    \"productName\": \"Good Day Butter Cookies\",\r\n    \"productCategory\": \"Home & Kitchen\",\r\n    \"productDesc\": \"Home & Kitchen\",\r\n    \"noOfUnits\": \"45\",\r\n    \"weightOfUnit\": \"120\",\r\n    \"unitCost\": \"14.5\",\r\n    \"landedCost\": \"3.5\",\r\n    \"productReceived\": \"2023-08-24\",\r\n    \"productLocation\": \"Cochin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/products/create-update",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"products",
+						"create-update"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh Token Service",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refreshToken\": \""\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/auth/refreshtoken",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"auth",
+						"refreshtoken"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Buy Order",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer token",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"orderDetails\": [\r\n        {\r\n            \"manufacturerName\": \"Britannia\",\r\n            \"productName\": \"Good Day Butter\",\r\n            \"productCategoryName\": \"Home & Kitchen\",\r\n            \"noOfUnits\": 101,\r\n            \"unitCost\": \"7\",\r\n            \"weightOfUnit\": \"1000\",\r\n            \"totalWeight\": 100,\r\n            \"productValue\": 1010\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/stock/buy",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"stock",
+						"buy"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

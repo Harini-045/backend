@@ -56,3 +56,14 @@ jobs:
           tags: |
             harinisaravanavel/backend:latest
             harinisaravanavel/backend:${{ github.sha }}
+    deploy:
+    runs-on: self-hosted   # <-- This runs on your test server
+    needs: build-push
+
+    steps:
+      - name: Pull & run Docker image on test server
+        run: |
+          docker pull harinisaravanavel/backend:latest
+          docker stop backend || true
+          docker rm backend || true
+          docker run -d --name backend -p 8080:8080 harinisaravanavel/backend:latest

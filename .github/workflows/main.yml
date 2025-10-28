@@ -56,19 +56,41 @@ jobs:
           tags: |
             harinisaravanavel/backend:latest
             harinisaravanavel/backend:${{ github.sha }}
-      - name: Deploy backend to EC2
-        uses: appleboy/ssh-action@v0.1.10
+            
+      - name: Deploy on EC2
+        uses: appleboy/ssh-action@v0.1.6
         with:
           host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
+          username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            echo "Logging in to Docker Hub..."
-            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-            echo "Pulling latest image..."
-            docker pull harinisaravanavel/backend:latest
-            echo "Stopping and removing old container..."
+            # Step 1: Create a Docker network (if not exists)
+            docker network inspect app-network >/dev/null 2>&1 || docker network create app-network
+
+            # Step 2: Start MySQL container (if not running)
+            if [ ! "$(docker ps -q -f name=mysql-db)" ]; then
+              if [ "$(docker ps -aq -f status=exited -f name=mysql-db)" ]; then
+                docker rm mysql-db
+              fi
+              docker run -d \
+                --name mysql-db \
+                --network app-network \
+                -e MYSQL_ROOT_PASSWORD=Usernameroot@11 \
+                -e MYSQL_DATABASE=taskhub \
+                -p 3306:3306 \
+                --restart unless-stopped \
+                mysql:8.0
+            fi
+
+            # Step 3: Deploy backend container
+            docker pull ${{ secrets.DOCKER_USERNAME }}/backend:latest
             docker stop backend || true
             docker rm backend || true
-            echo "Running new container..."
-            docker run -d --name backend -p 8080:8080 harinisaravanavel/backend:latest
+            docker run -d \
+              --name backend \
+              --network app-network \
+              -p 8080:8080 \
+              -e SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/taskhub \
+              -e SPRING_DATASOURCE_USERNAME=root \
+              -e SPRING_DATASOURCE_PASSWORD=Usernameroot@11 \
+              ${{ secrets.DOCKER_USERNAME }}/backend:latest
